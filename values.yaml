@@ -27,9 +27,6 @@ environment:
   - name: ALLOW_NONE_AUTHENTICATION
     value: "yes"  # Allow no-auth clients
 
-persistence:
-  enabled: false
-
 service:
   enabled: true
   ports:
@@ -48,8 +45,15 @@ statefulset:
 # Ensures pods have predictable names like etcd-0, etcd-1, etcd-2
 fullnameOverride: "etcd"
 
+# We don't need persistence
+persistence:
+  enabled: false
+
+# We don't need the pre-upgrade job for our tests
+preUpgradeJob:
+  enabled: false
+
 # NOTE:
 # It's best practice to use the same name for the container and hostname when testing with Antithesis.
 # ETCD_NAME identifies the member within the cluster and is set automatically based on the pod name.
 # ETCD_INITIAL_ADVERTISE_PEER_URLS is inferred from the pod's DNS name.
-# These follow Bitnami chart defaults and match Docker Compose behavior.

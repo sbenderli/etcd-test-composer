@@ -6,7 +6,7 @@ spec:
   restartPolicy: Never
   containers:
     - name: health-checker
-      image: us-central1-docker.pkg.dev/molten-verve-216720/antithesis-pdev-repository/etcd-health-checker:v1
+      image: us-central1-docker.pkg.dev/molten-verve-216720/antithesis-pdev-repository/etcd-health-checker:k8s
       imagePullPolicy: IfNotPresent
       env:
         - name: PYTHONUNBUFFERED
